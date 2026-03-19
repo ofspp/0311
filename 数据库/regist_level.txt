@@ -1,0 +1,4 @@
+"id"	"regist_code"	"regist_name"	"regist_fee"	"regist_quota"	"sequence_no"	"delmark"
+"1"	"zjh"	"专家号"	"50"	"20"	"1"	"1"
+"2"	"pth"	"普通号"	"8"	"30"	"2"	"1"
+"3"	"zrysh"	"主任医生号"	"20"	"30"	"3"	"1"

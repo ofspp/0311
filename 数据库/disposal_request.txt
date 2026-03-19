@@ -1,0 +1,1 @@
+"id"	"register_id"	"medical_technology_id"	"disposal_info"	"disposal_position"	"creation_time"	"disposal_employee_id"	"inputdisposal_employee_id"	"disposal_time"	"disposal_result"	"disposal_state"	"disposal_remark"

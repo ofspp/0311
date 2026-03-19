@@ -1,0 +1,19 @@
+package com.neuedu.service.login.impl;
+
+import com.neuedu.mapper.EmployeeMapper;
+import com.neuedu.service.login.LoginService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
+@Service
+public class LoginServiceImpl implements LoginService {
+	@Autowired
+	private EmployeeMapper employeeMapper;
+
+	@Override
+	public List<Map<String, Object>> login(String username, String password) {
+		return employeeMapper.getEmployeeAndDeptByNamePass(username,password);
+	}
+}

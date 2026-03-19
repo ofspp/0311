@@ -1,0 +1,3 @@
+"id"	"settle_code"	"settle_name"	"sequence_no"	"delmark"
+"1"	"js001"	"自费"	"1"	"1"
+"2"	"js002"	"市医保"	"2"	"1"

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.mapper.DrugInfoMapper">
+	<!-- 根据药品名称和拼音助记码进行模糊查询 -->
+	<select id="searchDrug" resultType="java.util.Map" parameterType="java.util.Map">
+	SELECT *
+	FROM drug_info
+	WHERE 1=1
+	<if test="drug_name!=null and drug_name!='' ">
+		AND drug_name like concat('%',#{drug_name,jdbcType=VARCHAR},'%')
+	</if>
+	<if test="mnemonic_code!=null and mnemonic_code!='' ">
+		AND mnemonic_code like concat('%',#{mnemonic_code,jdbcType=VARCHAR},'%')
+	</if>
+	LIMIT 0,50
+	</select>
+ 
+	<!-- 根据药品名称和拼音助记码进行模糊查询(分页) -->
+	<select id="searchPageDrug" resultType="java.util.Map" parameterType="java.util.Map">
+	SELECT *
+	FROM drug_info
+	WHERE 1=1
+	<if test="drug_name!=null and drug_name!='' ">
+		AND drug_name like concat('%',#{drug_name,jdbcType=VARCHAR},'%')
+	</if>
+	<if test="drug_code!=null and drug_code!='' ">
+		AND drug_code like concat('%',#{drug_code,jdbcType=VARCHAR},'%')
+	</if>
+	<if test="mnemonic_code!=null and mnemonic_code!='' ">
+		AND mnemonic_code like concat('%',#{mnemonic_code,jdbcType=VARCHAR},'%')
+	</if>
+	LIMIT ${(nowPageNumber-1) * pageSize} ,#{pageSize}
+	</select>
+	<!-- 根据药品名称和拼音助记码进行模糊查询(分页) -->
+	<select id="searchPageDrugCount" resultType="java.lang.Integer" parameterType="java.util.Map">
+	SELECT count(*)
+	FROM drug_info
+	WHERE 1=1
+	<if test="drug_name!=null and drug_name!='' ">
+		AND drug_name like concat('%',#{drug_name,jdbcType=VARCHAR},'%')
+	</if>
+	<if test="drug_code!=null and drug_code!='' ">
+		AND drug_code like concat('%',#{drug_code,jdbcType=VARCHAR},'%')
+	</if>
+	<if test="mnemonic_code!=null and mnemonic_code!='' ">
+		AND mnemonic_code like concat('%',#{mnemonic_code,jdbcType=VARCHAR},'%')
+	</if>
+	</select>
+
+	<!-- 新增药品 -->
+	<insert id="insertDrug" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO drug_info
+		(drug_code, drug_name, drug_format, drug_unit, manufacturer, drug_dosage, drug_type, drug_price, mnemonic_code, creation_date)
+		VALUES
+		(#{drug_code}, #{drug_name}, #{drug_format}, #{drug_unit}, #{manufacturer}, #{drug_dosage}, #{drug_type}, #{drug_price}, #{mnemonic_code}, NOW())
+	</insert>
+
+	<!-- 修改药品 -->
+	<update id="updateDrug" parameterType="java.util.Map">
+		UPDATE drug_info
+		<set>
+			<if test="drug_code!=null">drug_code = #{drug_code},</if>
+			<if test="drug_name!=null">drug_name = #{drug_name},</if>
+			<if test="drug_format!=null">drug_format = #{drug_format},</if>
+			<if test="drug_unit!=null">drug_unit = #{drug_unit},</if>
+			<if test="manufacturer!=null">manufacturer = #{manufacturer},</if>
+			<if test="drug_dosage!=null">drug_dosage = #{drug_dosage},</if>
+			<if test="drug_type!=null">drug_type = #{drug_type},</if>
+			<if test="drug_price!=null">drug_price = #{drug_price},</if>
+			<if test="mnemonic_code!=null">mnemonic_code = #{mnemonic_code},</if>
+		</set>
+		WHERE id = #{id}
+	</update>
+
+	<!-- 删除药品 -->
+	<delete id="deleteDrugById" parameterType="int">
+		DELETE FROM drug_info WHERE id = #{id}
+	</delete>
+</mapper>

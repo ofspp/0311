@@ -1,0 +1,5 @@
+"id"	"register_id"	"readme"	"present"	"present_treat"	"history"	"allergy"	"physique"	"proposal"	"careful"	"diagnosis"	"cure"
+"17"	"22"	"测试数据3"	"测试数据3"	"测试数据3"	"测试数据3"	"测试数据3"	"测试数据3"	"测试数据3"	"测试数据3"	"测试数据3"	"测试数据3"
+"18"	"24"	"头疼"	"头疼不舒服"	"头疼"	"发烧感冒"	"庆大霉素过敏"	"偏廋"	"多喝水"	"多休息"	"骨质增生"	"看病诊治"
+"19"	"30"	"fzgdbxbf"	"zdfgx"	"fzdghn"	"ezrfgtrxh"	"zrffgx"	"rzgx"	"ertfxgh"	"rfdg"		
+"20"	"31"	"aswd"	"ADSA"	"sad"	"sadsf"	"asd"	"asd"	"sadcf"	"asdc"		
